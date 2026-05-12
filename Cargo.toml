@@ -1,6 +1,7 @@
 [package]
 version = "0.0.1"
 name = "minsay"
+description = "A partially satirical fortune+cowsay clone featuring quotes from the area of UNIX-hacker culture nihilism"
 authors = ["diviocity"]
 edition = "2024"
 repository = "https://codeberg.org/diviocity/minsay"
