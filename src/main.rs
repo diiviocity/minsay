@@ -102,6 +102,9 @@ fn main() {
             "All software sucks.",
             "using a GUI is like being a sub in BDSM: your every action is constrained...",
             "Ruby on Rails, the PHP of a new generation",
+            "software security placebos need to keep getting more complex to keep working",
+            "Apple owners do it with mice!",
+            "when in doubt, use brute force",
         ].choose(&mut rng).unwrap().to_string()
     };
     
