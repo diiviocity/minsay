@@ -2,7 +2,7 @@
 
 > *A partially satirical fortune+cowsay clone featuring quotes from the area of UNIX-hacker culture nihilism*
 
-![demo](media/bloat.png)
+![demo](https://codeberg.org/diviocity/minsay/media/branch/main/media/bloat.png)
 
 ## >> WHY? >>
 
@@ -28,6 +28,11 @@ It has no UTF-8 support, no proper special character handling, no customisation.
 ## >> INSTALLATION >>
 
 *There are no OS-specific packages being shipped*
+
+Installing from the crates.io:
+```shell
+cargo install minsay
+```
 
 Installing from the git repo:
 ```shell

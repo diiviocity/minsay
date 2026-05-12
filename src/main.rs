@@ -99,7 +99,9 @@ fn main() {
             "Bill Gates says: \"Abstraction layers are like condoms: you should wear at least three!... Otherwise you're a terrorist!\"",
             "an idiot admires complexity, a genius admires simplicity",
             "Software is never finished, only abandoned or rewritten in Rust for some fucking reason",
-            "All software sucks."
+            "All software sucks.",
+            "using a GUI is like being a sub in BDSM: your every action is constrained...",
+            "Ruby on Rails, the PHP of a new generation",
         ].choose(&mut rng).unwrap().to_string()
     };
     

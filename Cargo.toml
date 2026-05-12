@@ -1,7 +1,12 @@
 [package]
+version = "0.0.1"
 name = "minsay"
-version = "0.0.0"
+authors = ["diviocity"]
 edition = "2024"
+repository = "https://codeberg.org/diviocity/minsay"
+homepage = "https://divio.city/projects/minsay"
+readme = "README.md"
+license-file = "LICENSE"
 
 [dependencies]
 rand = "0.10.1"
