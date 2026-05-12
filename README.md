@@ -2,6 +2,8 @@
 
 > *A partially satirical fortune+cowsay clone featuring quotes from the area of UNIX-hacker culture nihilism*
 
+![demo](media/bloat.png)
+
 ## >> WHY? >>
 
 The modern UNIXoids are unaware of the majestic beauty of digital nihilism.
