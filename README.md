@@ -14,9 +14,9 @@ I used to be one of the one of the deniers in the past, but that was before I fo
 
 ## >> WHAT? >>
 
-This is a stupidly-implemented Rust program that emulates the behaviour of running `fortune | cowsay` in your terminal, except with a hardcoded quote database.
+This is a program that emulates the behaviour of running `fortune | cowsay` in your terminal, except with a hardcoded quote database.
 
-It has no UTF-8 support, no proper special character handling, no customisation. The only good part of it are the quotes, which I've gathered from various sources including, but not limited to:
+The only good part of this program are the quotes, which were gathered from various sources including, but not limited to:
 
 - About pages of various software
 - Cat-v.org
@@ -25,11 +25,13 @@ It has no UTF-8 support, no proper special character handling, no customisation.
 - Reddit
 - The UNIX-HATERS Handbook
 
+And, yes, the program is itself an oxymoron: it shits on the very language that it was written in. {Un,}fortunately, it doesn't have enough external dependencies to call itself "blazingly fast".
+
 ## >> INSTALLATION >>
 
 *There are no OS-specific packages being shipped*
 
-Installing from the crates.io:
+Installing from crates.io:
 ```shell
 cargo install minsay
 ```
