@@ -80,7 +80,6 @@ fn generate_quote() -> String {
         "RMS is to Unix, like Hitler to Nietzsche",
         "In the early days Unix programs had two design rules: 1. It didn't have to be good or correct. 2. It had to be small. As hardware became more powerful, rule 2 has been relaxed.",
         "i don't have \"impostor syndrome\", i am just capable of correct assessing my own incompetence",
-        "Rust succumbed to being a fetishised, slow, and unpleasant programming language used mostly by degenerates",
         "electron applications are what happens when the developer is pretending to not hate themselves but secretly wants others to hate them",
         "the internet of things is the modern equivalent of pre-industrialization plumbing systems",
         "Go is just a worse version of Rust: an attempt at a C++ rewrite, but even more naive",
@@ -105,6 +104,18 @@ fn generate_quote() -> String {
         "software security placebos need to keep getting more complex to keep working",
         "Apple owners do it with mice!",
         "when in doubt, use brute force",
+        "real linux users don't use a wallpaper",
+        "You built a frame-buffer driver four your kernel? Bloat.",
+        "I like offending people because I think people who get offended should be offended",
+        "Lennart \"You will own nothing\" Poettering",
+        "minimalism is to autism as having friends is to everyone else",
+        "it's cute how people who know nothing pretend they know things",
+        "Sandboxing isn't a silver bullet. Those famously don't exist in security.",
+        "Someone should make a distro called Arch BTW made for posers, coming with a pre-riced Hyprland and absolutely no bloat (aka nothing except for a flashy translucent terminal and fastfetch)",
+        "Set up a script which will randomly cycle through all WMs/DEs that you have installed per restart or log in!",
+        "XDG knows better then users what dirs they want, and WILL mkdir them. Then you MAY delete it.",
+        "Guys if you don't like malware, just compile every piece of software yourself, after you review every line of source code (and fix a few bugs while you're at it).",
+        "Lutris: the installer that installs installers that install installers (written in Python btw)",
     ];
 
     return quotes.choose(&mut rng).unwrap().to_string();
