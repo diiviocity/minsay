@@ -9,15 +9,9 @@ fn cowsay(text: &str) {
     while !words.is_empty() {
 
         let mut current_line = String::new();
-        let extra_space = if current_line.is_empty() { 0 } else { 1 };
         
-        while !words.is_empty() 
-                && current_line.chars().count() + words[0].chars().count() + extra_space <= MAX_LINE_WIDTH {
-
-                if !current_line.is_empty() {
-                    current_line.push(' ');
-                }
-
+        while !words.is_empty() && current_line.chars().count() + words[0].chars().count() <= MAX_LINE_WIDTH {
+                if !current_line.is_empty() { current_line.push(' '); }
                 current_line.push_str(words[0]);
                 words.remove(0);
         }
@@ -41,6 +35,7 @@ fn cowsay(text: &str) {
     println!("                ||----w |");
     println!("                ||     ||");
 }
+
 
 fn generate_quote() -> String {
     let mut rng = rand::rng();
@@ -116,6 +111,9 @@ fn generate_quote() -> String {
         "XDG knows better then users what dirs they want, and WILL mkdir them. Then you MAY delete it.",
         "Guys if you don't like malware, just compile every piece of software yourself, after you review every line of source code (and fix a few bugs while you're at it).",
         "Lutris: the installer that installs installers that install installers (written in Python btw)",
+        "why are you calling foss devs dumb when you haven't gone into the open source code and fixed it yourself?...",
+        "Very soon canonical will decide that all GTK users must stop drinking coffee with caffeine.",
+        "hyprland went from changing syntax every few minutes to now changing programming languages every few minutes",
     ];
 
     return quotes.choose(&mut rng).unwrap().to_string();
