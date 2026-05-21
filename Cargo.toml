@@ -1,5 +1,5 @@
 [package]
-version = "0.0.6"
+version = "0.0.7"
 name = "minsay"
 description = "A partially satirical fortune+cowsay clone featuring quotes from the area of UNIX-hacker culture nihilism"
 authors = ["diviocity"]

@@ -120,7 +120,13 @@ fn generate_quote() -> String {
         "i'd rather send letters by mail than use discord, we need an irc client that appeals to stupid people!",
         "don't forget to run your daily \"pacman -Syyu\" at 3 am!",
         "HIV is no longer a terminal disease?.. Does it have a GUI now?!",
-        "you use snaps? for what? for the copilot desktop?"
+        "you use snaps? for what? for the copilot desktop?",
+        "You should write an efi-executable static fastfetch in no-std rust",
+        "Ульяновск.BSD btw",
+        "Does X comply with the Unix philosophy?",
+        "I'd just like to interject for a moment...",
+        "systemd-free? what about udev and dbus?",
+        "CachyOS Update: Reboot recommended! Reboot is recommended due to the upgrate of core system package(s).",
     ];
     return quotes.choose(&mut rng).unwrap().to_string();
 }
