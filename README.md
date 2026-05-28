@@ -2,7 +2,7 @@
 
 > *A partially satirical fortune+cowsay clone featuring quotes from the area of UNIX-hacker culture nihilism*
 
-![demo](https://git.divio.city/diviocity/minsay/media/branch/main/media/bloat.png)
+![demo](https://git.divio.city/me/minsay/media/branch/main/media/bloat.png)
 
 ## >> WHY? >>
 
@@ -38,13 +38,13 @@ cargo install minsay
 
 Installing from the git repo:
 ```shell
-git clone https://git.divio.city/diviocity/minsay
+git clone https://git.divio.city/me/minsay
 cd minsay
 cargo install --path .
 ```
 
 Mirrors:
-[diviocity](https://git.divio.city/diviocity/minsay)
+[diviocity](https://git.divio.city/me/minsay)
 [disroot](https://git.disroot.org/diviocity/minsay)
 [codeberg](https://codeberg.org/diviocity/minsay)
 [git.gay](https://git.gay/diviocity/minsay)
