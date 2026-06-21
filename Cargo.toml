@@ -1,10 +1,10 @@
 [package]
-version = "0.1.0"
+version = "0.1.1"
 name = "minsay"
 description = "A partially satirical fortune+cowsay clone featuring quotes from the area of UNIX-hacker culture nihilism"
 authors = ["diviocity"]
 edition = "2024"
-repository = "https://git.divio.city/diviocity/minsay"
+repository = "https://git.divio.city/me/minsay"
 homepage = "https://divio.city/projects/minsay"
 readme = "README.md"
 license-file = "LICENSE"

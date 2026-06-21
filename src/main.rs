@@ -140,6 +140,11 @@ fn generate_quote() -> String {
         "Please don't theme our apps!",
         "*nix users try not to mention the windows challenge",
         "\"Linux desktop\" is a fake term likely invented by Red Hat or XDG to appeal to the non technically inclined. Every distribution able to run X11 is capable of being a \"desktop\". The term is a dogwhistle for pushing GUI tools and idiot-appealing features.",
+        "Vim: GTK4 GUI is available!",
+        "ooooh shit some dude wrote :(){:|:&};: and pushed it into my public git server",
+        "The only liberated screen is a screen that is not touched by a graphics environment. only terminals!",
+        "must a more modern foundation force any graphic application to hang for x>200ms on startup? that's, like, longer than doom starts on dos",
+        "stable? that's for horses!"
     ];
     return quotes.choose(&mut rng).unwrap().to_string();
 }
