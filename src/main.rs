@@ -133,8 +133,8 @@ fn get_creatures() -> HashMap<&'static str, Creature> {
             desc: "cat"}),
         ("-bs",
          Creature {
-            art: "\\\\    /\\       /\\
- \\\\  /  \\ __  /  \\
+            art: "\\    /\\       /\\
+ \\  /  \\ __  /  \\
     |   \\) \\/   |
    _\\ ___   ___ /_
    \\_ ( ●   ● ) _/

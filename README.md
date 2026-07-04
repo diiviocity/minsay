@@ -2,7 +2,7 @@
 
 > *A partially satirical fortune+cowsay clone featuring quotes from the area of UNIX-hacker culture nihilism*
 
-![demo](https://git.divio.city/me/minsay/media/branch/main/media/bloat.png)
+![demo](media/bloat.png)
 
 ## >> WHY? >>
 
