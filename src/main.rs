@@ -109,7 +109,12 @@ const QUOTES: &[&str] = &[
     "ooooh shit some dude wrote :(){:|:&};: and pushed it into my public git server",
     "The only liberated screen is a screen that is not touched by a graphics environment. only terminals!",
     "must a more modern foundation force any graphic application to hang for x>200ms on startup? that's, like, longer than doom starts on dos",
-    "stable? that's for horses!"
+    "stable? that's for horses!",
+    "i installed the wine compatibility layer just to run windows malware",
+    "V is essentially the illegitimate child of Zig and Go",
+    "Improve your C/C++ codebase by maintaining it with Zig!",
+    "If Rust is such a moral language, why do they not have a Code of Ethics explicitly stating their stance on adultery? Curious. Does the Rust team want to fuck your spouse?",
+    "code that's from 2020? too old!",
 ];
 
 struct Creature {
