@@ -1,15 +1,24 @@
-use std::collections::HashMap;
-
+#[derive(Clone, Copy)]
 pub struct Creature {
 	pub art: &'static str,
 	pub desc: &'static str,
 }
 
-pub fn get_creatures() -> HashMap<&'static str, Creature> {
-	HashMap::from([
-		("-b",
-		 Creature {
-			art: "\\    /\\       /\\
+pub struct CreatureTable {
+    pub arr: [Creature; Self::LEN]
+}
+
+impl CreatureTable {
+    pub const LEN: usize = 11;
+    pub const CAT: usize = 0;
+    /// Table keys sorted in lexicographical and Creature index order
+    pub const KEYS: [&'static str; Self::LEN] = [
+        "-b", "-bd", "-bs", "-c", "-cb", "-cd", "-cg", "-cs", "-ct", "-cw", "-cy",
+    ];
+    pub const fn new() -> Self {
+        let arr = [
+            Creature {
+                art: "\\    /\\       /\\
  \\  /  \\ __  /  \\
     |   \\) \\/   |
    _\\ ___   ___ /_
@@ -18,22 +27,10 @@ pub fn get_creatures() -> HashMap<&'static str, Creature> {
       \\_  —  _/
        >     \\
        |     |",
-			desc: "cat"}),
-		("-bs",
-		 Creature {
-			art: "\\    /\\       /\\
- \\  /  \\ __  /  \\
-    |   \\) \\/   |
-   _\\ ___   ___ /_
-   \\_ ( ●   ● ) _/
-    /_ ~  -  ~ _\\
-      \\_  w  _/
-       >     \\
-       |     |",
-			desc: "cat smiling"}),
-		("-bd",
-		 Creature {
-			art: "\\    /\\       /\\
+                desc: "cat"
+            },
+            Creature {
+                art: "\\    /\\       /\\
  \\  /  \\ __  /  \\
     |   \\) \\/   |
    _\\ ___   ___ /_
@@ -42,70 +39,102 @@ pub fn get_creatures() -> HashMap<&'static str, Creature> {
       \\_  —  _/
        >     \\
        |     |",
-			desc: "cat dead"}),
-		("-c",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cat dead"
+            },
+            Creature {
+                art: "\\    /\\       /\\
+ \\  /  \\ __  /  \\
+    |   \\) \\/   |
+   _\\ ___   ___ /_
+   \\_ ( ●   ● ) _/
+    /_ ~  -  ~ _\\
+      \\_  w  _/
+       >     \\
+       |     |",
+                desc: "cat smiling"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  (oo)\\_______
     (__)\\       )\\/\\
         ||----w |
         ||     ||",
-			desc: "cow"}),
-		("-cb",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cow"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  (==)\\_______
     (__)\\       )\\/\\
         ||----w |
         ||     ||",
-			desc: "cow borg"}),
-		("-cd",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cow borg"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  (xx)\\_______
     (__)\\       )\\/\\
      U  ||----w |
         ||     ||",
-			desc: "cow dead"}),
-		("-cg",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cow dead"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  ($$)\\_______
     (__)\\       )\\/\\
         ||----w |
         ||     ||",
-			desc: "cow greedy"}),
-		("-cs",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cow greedy"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  (**)\\_______
     (__)\\       )\\/\\
      U  ||----w |
         ||     ||",
-			desc: "cow sleepy"}),
-		("-ct",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cow sleepy"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  (--)\\_______
     (__)\\       )\\/\\
         ||----w |
         ||     ||",
-			desc: "cow tired"}),
-		("-cw",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cow tired"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  (OO)\\_______
     (__)\\       )\\/\\
         ||----w |
         ||     ||",
-			desc: "cow wired"}),
-		("-cy",
-		 Creature {
-			art: "\\   ^__^
+                desc: "cow wired"
+            },
+            Creature {
+                art: "\\   ^__^
  \\  (..)\\_______
     (__)\\       )\\/\\
         ||----w |
         ||     ||",
-			desc: "cow young"}),
-	])
+                desc: "cow young"
+            },
+        ];
+        Self { arr }
+         
+    }
+    pub fn get(&self, flags: &str) -> Option<&Creature> {
+        let idx = Self::KEYS.iter().position(|s| *s == flags)?;
+        self.arr.get(idx) 
+    }
+    pub const fn keys(&self) -> &[&'static str; 11] {
+        &Self::KEYS
+    }
+    pub const fn len(&self) -> usize {
+        Self::LEN
+    }
+    pub const fn cat(&self) -> Creature {
+        self.arr[Self::CAT]
+    }
 }
+
+pub const CREATURES: CreatureTable = CreatureTable::new();
+
