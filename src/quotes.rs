@@ -111,6 +111,7 @@ const QUOTES: &[&str] = &[
     "Improve your C/C++ codebase by maintaining it with Zig!",
     "If Rust is such a moral language, why do they not have a Code of Ethics explicitly stating their stance on adultery? Curious. Does the Rust team want to fuck your spouse?",
     "code that's from 2020? too old!",
+	"if memory safety was truly the reason Fil-C would be enough for the Rust fanatics"
 ];
 
 pub fn generate_quote() -> String {
