@@ -15,6 +15,8 @@ pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
                 line.clear(); 
             }
         }
+        // Remove trailing b' '
+        unsafe { line.as_bytes_mut().pop() };
         lines.push(line.clone())
 	}
 
