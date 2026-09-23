@@ -42,7 +42,7 @@ impl MsgType {
 impl Quote {
     fn merge_or_random(first_word: Option<String>, other_words: impl Iterator<Item = String>) -> Self {
         // Reuse first word buffer for pushing other words if it exists,
-        // otherwise allocate a random String from QUOTES
+        // otherwise return a random &'static str from QUOTES
         let mut buf = match first_word {
             None => return Self(Cow::Borrowed(quotes::generate_quote())),
             Some(s) => s
