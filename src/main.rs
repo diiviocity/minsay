@@ -94,5 +94,5 @@ fn main() {
     };
    
     let quote = Quote::merge_or_random(first_word_of_quote, args);
-    crate::cowsay::cowsay(&quote.0, &creature);
+    unsafe { crate::cowsay::cowsay(&quote.0, &creature) }
 }

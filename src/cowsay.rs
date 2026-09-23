@@ -4,32 +4,44 @@ use meowstring::MeowString;
 use meowvec::MeowVec;
 
 const MAX_LINE_WIDTH: usize = 40;
-const MAX_LINES: usize = 64;
+const MAX_LINES: usize = 32;
 
-fn split_into_bounded_lines(text: &str) -> MeowVec<MeowString<MAX_LINE_WIDTH>, MAX_LINES> {
+/// # Safety
+///     The caller must ensure the text, after bounding, spans less than MAX_LINES lines.
+///     Violating that invariant causes undefined behavior (hopefully a segfault)
+unsafe fn split_into_bounded_lines(text: &str) -> MeowVec<MeowString<MAX_LINE_WIDTH>, MAX_LINES> {
 	let mut lines = MeowVec::new();
     let mut line = MeowString::<MAX_LINE_WIDTH>::new();
 	
     for inline in text.split('\n') {
         for word in inline.split_whitespace()  {
             if line.try_push_str(word).is_err() {
-                lines.push(line.clone());
+                //@MauntiCat
+                // Causes undefined behavior when the bounded text spans >MAX_LINES lines :3
+                unsafe { lines.push_unchecked(line.clone()); }
                 line.clear();
                 line.push_str(word);
             }
             let _ = line.try_push_str(" ");
         }
-        // Remove trailing b' '
-        unsafe { line.as_bytes_mut().pop(); }
-        lines.push(line.clone());
+        //@MauntiCat
+        unsafe {
+            // Remove trailing b' '
+            line.as_bytes_mut().pop();
+            // Causes undefined behavior when the bounded text spans >MAX_LINES lines :3
+            lines.push_unchecked(line.clone());
+        }
         line.clear();
 	}
 
     lines
 }
 
-pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
-    let lines = split_into_bounded_lines(text);
+/// # Safety
+///     The caller must ensure the quote is not bloated.
+///     Violating that invariant causes undefined behavior
+pub unsafe fn cowsay(text: &str, creature: &crate::creatures::Creature) {
+    let lines = unsafe { split_into_bounded_lines(text) };
 	
     let max_width = lines.iter().map( |line|  line.chars().count() )
 	.max().unwrap_or(0);
