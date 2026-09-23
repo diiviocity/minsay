@@ -1,14 +1,14 @@
 use meowstring::MeowString;
+use meowvec::MeowVec;
 
 const MAX_LINE_WIDTH: usize = 40;
-const EXPECTED_MAX_LINES: usize = 32;
+const MAX_LINES: usize = 64;
 
-pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
-	let mut lines: Vec<MeowString<MAX_LINE_WIDTH>> = Vec::with_capacity(EXPECTED_MAX_LINES);
-
-	for inline in text.split('\n') {
-        let mut line = MeowString::<MAX_LINE_WIDTH>::new();
-        
+fn split_into_bounded_lines(text: &str) -> MeowVec<MeowString<MAX_LINE_WIDTH>, MAX_LINES> {
+	let mut lines = MeowVec::new();
+    let mut line = MeowString::<MAX_LINE_WIDTH>::new();
+	
+    for inline in text.split('\n') {
         for word in inline.split_whitespace() {
             if line.try_push_str(word).is_err() || line.try_push_str(" ").is_err() {
                 lines.push(line.clone());
@@ -16,22 +16,30 @@ pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
             }
         }
         // Remove trailing b' '
-        unsafe { line.as_bytes_mut().pop() };
-        lines.push(line.clone())
+        unsafe { line.as_bytes_mut().pop(); }
+        lines.push(line.clone());
+        line.clear();
 	}
 
-	let max_width = lines.iter().map( |line|  line.chars().count() )
-	.max().unwrap_or(0);
+    lines
+}
 
-	println!("╭{}╮", "─".repeat(2 + max_width));
+pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
+    let lines = split_into_bounded_lines(text);
+	
+    let max_width = lines.iter().map( |line|  line.chars().count() )
+	.max().unwrap_or(0);
+   
+    // these bitches are 3 bytes long
+	println!("╭{}╮", MeowString::<{ (MAX_LINE_WIDTH + 2) * 3}>::repeat("─", 2 + max_width));
 	for line in lines.iter() {
 		let padding = max_width - line.chars().count();
-		println!("│ {}{} │", line, " ".repeat(padding));
+		println!("│ {}{} │", line, MeowString::<MAX_LINE_WIDTH>::repeat(" ", padding));
 	}
-	println!("╰{}╯", "─".repeat(2 + max_width));
+	println!("╰{}╯", MeowString::<{ (MAX_LINE_WIDTH + 2) * 3}>::repeat("─", 2 + max_width));
 
-	let width_center = ((max_width) / 2).saturating_sub(6) + 4;
+	let width_center = (max_width / 2).saturating_sub(2);
 	for line in creature.art.lines() {
-		println!("{}{}", " ".repeat(width_center), line);
+		println!("{}{}", MeowString::<{ (MAX_LINE_WIDTH / 2).saturating_sub(2) }>::repeat(" ", width_center), line);
 	}
 }

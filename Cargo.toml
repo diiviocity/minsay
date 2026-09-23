@@ -10,5 +10,6 @@ readme = "README.md"
 license-file = "LICENSE"
 
 [dependencies]
-meowstring = "1.1.1"
+meowstring = "1.1.2"
+meowvec = "1.1.2"
 rand = "0.10.1"

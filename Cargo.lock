@@ -48,9 +48,9 @@ checksum = "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2"
 
 [[package]]
 name = "meowstring"
-version = "1.1.1"
+version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "766daad6d207649726ce7a898a8f66578c98674a87aa9dbbc7305ff45dffe2d6"
+checksum = "b2a5a753e39478e00d6811f0ca49bbace4fefadf7b0cede2aa1a080714f628a2"
 dependencies = [
  "meowvec",
 ]
@@ -66,6 +66,7 @@ name = "minsay"
 version = "0.3.1"
 dependencies = [
  "meowstring",
+ "meowvec",
  "rand",
 ]
 
