@@ -1,22 +1,21 @@
-const MAX_LINE_WIDTH: usize = 40;
+use meowstring::MeowString;
+
+const LINE_WIDTH: usize = 40;
+const EXPECTED_MAX_LINES: usize = 32;
 
 pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
-	let mut lines: Vec<String> = Vec::new();
+	let mut lines: Vec<MeowString<LINE_WIDTH>> = Vec::with_capacity(EXPECTED_MAX_LINES);
 
 	for inline in text.split('\n') {
-		let mut words: Vec<&str> = inline.split_whitespace().collect();
-
-		while !words.is_empty() {
-			let mut current_line = String::new();
-
-			while !words.is_empty() && current_line.chars().count() + words[0].chars().count() <= MAX_LINE_WIDTH {
-				if !current_line.is_empty() { current_line.push(' '); }
-				current_line.push_str(words[0]);
-				words.remove(0);
-			}
-
-			lines.push(current_line);
-		}
+        let mut line = MeowString::<LINE_WIDTH>::new();
+        
+        for word in inline.split_whitespace() {
+            if line.try_push_str(word).is_err() || line.try_push_str(" ").is_err() {
+                lines.push(line.clone());
+                line.clear(); 
+            }
+        }
+        lines.push(line.clone())
 	}
 
 	let max_width = lines.iter().map( |line|  line.chars().count() )

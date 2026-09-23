@@ -47,9 +47,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2"
 
 [[package]]
+name = "meowstring"
+version = "1.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "766daad6d207649726ce7a898a8f66578c98674a87aa9dbbc7305ff45dffe2d6"
+dependencies = [
+ "meowvec",
+]
+
+[[package]]
+name = "meowvec"
+version = "1.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "354c58f87d08a8ad0a08c7c2a42e96a983a70670c6768eb56b04fc9b1d8adcc3"
+
+[[package]]
 name = "minsay"
 version = "0.3.1"
 dependencies = [
+ "meowstring",
  "rand",
 ]
 
