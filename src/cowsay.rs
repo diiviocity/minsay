@@ -1,3 +1,5 @@
+use std::io;
+
 use meowstring::MeowString;
 use meowvec::MeowVec;
 
@@ -9,11 +11,13 @@ fn split_into_bounded_lines(text: &str) -> MeowVec<MeowString<MAX_LINE_WIDTH>, M
     let mut line = MeowString::<MAX_LINE_WIDTH>::new();
 	
     for inline in text.split('\n') {
-        for word in inline.split_whitespace() {
-            if line.try_push_str(word).is_err() || line.try_push_str(" ").is_err() {
+        for word in inline.split_whitespace()  {
+            if line.try_push_str(word).is_err() {
                 lines.push(line.clone());
-                line.clear(); 
+                line.clear();
+                line.push_str(word);
             }
+            let _ = line.try_push_str(" ");
         }
         // Remove trailing b' '
         unsafe { line.as_bytes_mut().pop(); }
@@ -29,7 +33,9 @@ pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
 	
     let max_width = lines.iter().map( |line|  line.chars().count() )
 	.max().unwrap_or(0);
-   
+  
+    // lock stdout beforehand for less overhead
+    let lock = io::stdout().lock();
     // these bitches are 3 bytes long
 	println!("╭{}╮", MeowString::<{ (MAX_LINE_WIDTH + 2) * 3}>::repeat("─", 2 + max_width));
 	for line in lines.iter() {
@@ -42,4 +48,5 @@ pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
 	for line in creature.art.lines() {
 		println!("{}{}", MeowString::<{ (MAX_LINE_WIDTH / 2).saturating_sub(2) }>::repeat(" ", width_center), line);
 	}
+    drop(lock)
 }
