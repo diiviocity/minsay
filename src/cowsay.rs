@@ -1,13 +1,13 @@
 use meowstring::MeowString;
 
-const LINE_WIDTH: usize = 40;
+const MAX_LINE_WIDTH: usize = 40;
 const EXPECTED_MAX_LINES: usize = 32;
 
 pub fn cowsay(text: &str, creature: &crate::creatures::Creature) {
-	let mut lines: Vec<MeowString<LINE_WIDTH>> = Vec::with_capacity(EXPECTED_MAX_LINES);
+	let mut lines: Vec<MeowString<MAX_LINE_WIDTH>> = Vec::with_capacity(EXPECTED_MAX_LINES);
 
 	for inline in text.split('\n') {
-        let mut line = MeowString::<LINE_WIDTH>::new();
+        let mut line = MeowString::<MAX_LINE_WIDTH>::new();
         
         for word in inline.split_whitespace() {
             if line.try_push_str(word).is_err() || line.try_push_str(" ").is_err() {
