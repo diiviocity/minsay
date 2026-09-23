@@ -47,8 +47,11 @@ impl Quote {
             None => return Self(Cow::Borrowed(quotes::generate_quote())),
             Some(s) => s
         };
+        buf.push_str(" ");
+
         for word in other_words {
             buf.push_str(&word);
+            buf.push_str(" ")
         }
         Self(Cow::Owned(buf))
     }
