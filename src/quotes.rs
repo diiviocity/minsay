@@ -114,7 +114,7 @@ const QUOTES: &[&str] = &[
 	"if memory safety was truly the reason Fil-C would be enough for the Rust fanatics"
 ];
 
-pub fn generate_quote() -> String {
+pub fn generate_quote() -> &'static str {
 	let mut rng = rand::rng();
-	QUOTES.choose(&mut rng).unwrap().to_string()
+	QUOTES.choose(&mut rng).unwrap()
 }

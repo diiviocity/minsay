@@ -1,4 +1,4 @@
-use std::{env};
+use std::{borrow::Cow, env};
 
 use core::fmt;
 
@@ -16,7 +16,7 @@ enum MsgType {
     Version,
 }
 
-struct Quote(pub String);
+struct Quote(pub Cow<'static, str>);
 
 struct HelpMsg;
 
@@ -44,13 +44,13 @@ impl Quote {
         // Reuse first word buffer for pushing other words if it exists,
         // otherwise allocate a random String from QUOTES
         let mut buf = match first_word {
-            None => return Self(quotes::generate_quote()),
+            None => return Self(Cow::Borrowed(quotes::generate_quote())),
             Some(s) => s
         };
         for word in other_words {
             buf.push_str(&word);
         }
-        Self(buf)
+        Self(Cow::Owned(buf))
     }
 }
 
