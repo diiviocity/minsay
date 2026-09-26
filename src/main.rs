@@ -7,6 +7,7 @@ mod creatures;
 mod cowsay;
 
 use creatures::{Creature, CREATURES};
+use meowalloc::meow_allocator;
 
 enum MsgType {
     None,
@@ -73,6 +74,11 @@ impl fmt::Display for HelpMsg {
     }
 }
 
+// The current implementation is an arena allocator allowing for a maximum of 128KiB allocated space
+// and 31-32 allocations
+type MeowAlloc1_32 = meow_allocator!(1usize, 32usize);
+#[global_allocator]
+static ALLOCATOR: MeowAlloc1_32 = MeowAlloc1_32::new();
 
 fn main() {
     let mut args = env::args();
@@ -89,7 +95,7 @@ fn main() {
             return
         }
         MsgType::Flag(creature) => (creature, args.next()),
-        MsgType::None => (CREATURES.cat(), args.next()),
+        MsgType::None => (CREATURES.cat(), None),
         MsgType::NotAFlag(s) => (CREATURES.cat(), Some(s)),
     };
    
