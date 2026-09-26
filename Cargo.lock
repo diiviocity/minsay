@@ -54,9 +54,9 @@ checksum = "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2"
 
 [[package]]
 name = "meowalloc"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de687357a3dcbf5cef2bca5c74e46867e04a57dd44ff5de88756d3cdf981716e"
+checksum = "bed6894aaad6dc57e67a3392c83e93537b02e05d64eab2a4aecf7fcd7a4935da"
 dependencies = [
  "kitset",
  "meowvec",

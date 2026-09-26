@@ -75,7 +75,7 @@ impl fmt::Display for HelpMsg {
 }
 
 // The current implementation is an arena allocator allowing for a maximum of 4KiB allocated space
-// and 31-32 allocations
+// and 31-32 active allocations at a time
 type MeowAlloc1_32 = meow_allocator!(1usize, 32usize, 1);
 #[global_allocator]
 static ALLOCATOR: MeowAlloc1_32 = MeowAlloc1_32::new();
